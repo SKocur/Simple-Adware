@@ -4,15 +4,17 @@ import cv2
 
 
 class AdManager(object):
-    url = "http://d.wpimg.pl/1098145671--204938399/movies.jpg"
-    extension = ".jpg"
-    file_name, _ = urllib.request.urlretrieve(url)
-    new_file_name = ""
+    url = ""
+    extension = ""
+
+    def __init__(self):
+        self.new_file_name = ""
 
     def process_file(self):
-        base = os.path.splitext(self.file_name)[0]
+        file_name, _ = urllib.request.urlretrieve(self.url)
+        base = os.path.splitext(file_name)[0]
         self.new_file_name = base + self.extension
-        os.rename(self.file_name, self.new_file_name)
+        os.rename(file_name, self.new_file_name)
 
     def show_window(self):
         image_ad = cv2.imread(self.new_file_name)
